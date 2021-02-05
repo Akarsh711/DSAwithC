@@ -15,6 +15,36 @@ struct Node * createNode(int item){
     return n;
 }
 
+// insert
+void insert(struct Node *root, struct Node *item){
+    if(item->data <= root->data){
+        if(root->left == NULL)
+            root->left = item;
+        else
+            insert(root->left, item);
+    }
+    else{
+        if(root->right == NULL)
+            root->right = item;
+        else
+            insert(root->right, item);
+    }
+}
+
+// struct Node* insertAnotherWay(struct Node* root, int key)
+// {
+//     if (root == nullptr) {
+//         return newNode(key);
+//     }
+//     if (key < root->data) {
+//         root->left = insertAnotherWay(root->left, key);
+//     }
+//     else {
+//         root->right = insertAnotherWay(root->right, key);
+//     }
+//     return root;
+// }
+
 void printTreeRecursively(struct Node * root){
     if(root){
         printTreeRecursively(root->left); //IN OOPS IT WILL LOOK LIKE THIS :- left.printTreeRecursively
@@ -62,36 +92,10 @@ void search(struct Node *root, int item){
     }
 }
 
-// insert
-void insert(struct Node *root, struct Node *item){
-    if(item->data <= root->data){
-        if(root->left == NULL)
-            root->left = item;
-        else
-            insert(root->left, item);
-    }
-    else{
-        if(root->right == NULL)
-            root->right = item;
-        else
-            insert(root->right, item);
-    }
-}
+/* TODO */
+// Traversal, Search, Insert Using Loop 
 
-// struct Node* insertAnotherWay(struct Node* root, int key)
-// {
-//     if (root == nullptr) {
-//         return newNode(key);
-//     }
-//     if (key < root->data) {
-//         root->left = insertAnotherWay(root->left, key);
-//     }
-//     else {
-//         root->right = insertAnotherWay(root->right, key);
-//     }
- 
-//     return root;
-// }
+
 
 int main(){
     struct Node *root = createNode(3);
