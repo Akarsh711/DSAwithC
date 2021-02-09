@@ -30,6 +30,17 @@ void insertLoop(struct Node *start_node, int data){
     temp->next = createNode(data);
 }
 
+void searchLoop(struct Node * start_node, int to_search){
+    struct Node *temp = start_node;
+    while(start_node){
+        start_node = start_node->next; 
+        if(start_node->data == to_search){
+            printf("\nValue find by loop\n");
+            return;
+        }
+    }
+}
+
 // RECURSIVE FUNCTIONS
 void traverse(struct Node *start_node){
     if(start_node){ //Putting start_node->data give me segementation fault!! [RESEARCHABLE THING!]
@@ -49,7 +60,7 @@ void insert(struct Node * start_node, int data){
 
 void search(struct Node* start_node, int to_search){
     if(start_node->data == to_search){
-        printf("\nValue find in list");
+        printf("\nValue find in list\n");
     }
     else{
         search(start_node->next, to_search);
@@ -62,7 +73,7 @@ int main(){
     start_node->next->next = createNode(9);
     insert(start_node, 10);
     insertLoop(start_node, 11);
-    
+    searchLoop(start_node, 11);
     traverse(start_node);
     search(start_node, 9);
     traverseLoop(start_node);
