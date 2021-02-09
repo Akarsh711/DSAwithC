@@ -41,6 +41,14 @@ void searchLoop(struct Node * start_node, int to_search){
     }
 }
 
+struct Node * prependLoop(struct Node * start_node, int data){
+    /* TODO: Add a Check if list have only one node or none*/
+    struct Node * n = createNode(data);
+    n->next = start_node;
+    return n;
+}
+
+
 // RECURSIVE FUNCTIONS
 void traverse(struct Node *start_node){
     if(start_node){ //Putting start_node->data give me segementation fault!! [RESEARCHABLE THING!]
@@ -67,15 +75,21 @@ void search(struct Node* start_node, int to_search){
     }
 }
 
+// struct Node * insert(struct Node *start_node, int data){
+//     struct Node * n = createNode(data);
+// }
+
+
 int main(){
     struct Node *start_node = createNode(3);
     start_node->next = createNode(6);
     start_node->next->next = createNode(9);
     insert(start_node, 10);
+    start_node = prependLoop(start_node, 1);
     insertLoop(start_node, 11);
     searchLoop(start_node, 11);
-    traverse(start_node);
     search(start_node, 9);
+    traverse(start_node);
     traverseLoop(start_node);
 
     printf("\ntest");
