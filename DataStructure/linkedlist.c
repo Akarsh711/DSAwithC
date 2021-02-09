@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <conio.h>
-
+#include <stdlib.h>
 struct Node{
     int data;
     struct Node *next;
@@ -22,15 +22,15 @@ void traverseLoop(struct Node *start_node){
     }
 }
 
-void insertLoop(struct Node *start_node, int data){
-    struct node *temp = start_node;
-    while(temp->next != NULL){
-    temp = temp->next;
-    }
+// void insertLoop(struct Node *start_node, int data){
+//     struct node *temp = start_node;
+//     while(temp->next != NULL){
+//     temp = temp->next;
+//     }
 
-temp->next = newNode;
+// temp->next = newNode;
     
-}
+// }
 
 // RECURSIVE FUNCTIONS
 void traverse(struct Node *start_node){
@@ -45,13 +45,12 @@ void insert(struct Node * start_node, int data){
         insert(start_node->next, data);
     }
     else{
-        start_node = createNode(data);
+        start_node->next = createNode(data);
     }
 }
 
 void search(struct Node* start_node, int to_search){
-    if(start_node)
-        return;
+
     if(start_node->data == to_search){
         printf("\nValue find in list");
     }
@@ -65,11 +64,11 @@ int main(){
     start_node->next = createNode(6);
     start_node->next->next = createNode(9);
     insert(start_node, 10);
-    insertLoop(start_node, 11);
+    // insertLoop(start_node, 11);
     traverse(start_node);
     // printf("testing");
-    search(start_node, 10);
+    search(start_node, 9);
     // printf("testing");
     traverseLoop(start_node);
-    
+    printf("\ntest");
 }
