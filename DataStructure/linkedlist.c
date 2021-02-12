@@ -103,7 +103,6 @@ void insertAfterNode(struct Node *start_node, int data, int after_which_node){
     }
 }
 
-
 int main(){
     struct Node *start_node = createNode(3);
     start_node->next = createNode(6);
