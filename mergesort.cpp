@@ -32,6 +32,7 @@ void merge(int arr[], int l, int mid, int r){
     // Compare the both l_arr and r_arr array and put small one in main arr
     i = j = 0;
     k=l;
+    
     while(i<left && j<right){
     	if(l_arr[i] <= r_arr[j]){
     		arr[k] = l_arr[i];
