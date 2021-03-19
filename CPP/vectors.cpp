@@ -27,6 +27,7 @@ int main(){
 	// 	vec1.push_back(element);
 	// }
 	// To insert an element at certain position 
+	cout << "Printing char vector"<< vec2[4]<< endl;
 	vector<int> :: iterator iter = vec1.begin();
 	vec1.insert(iter,3, 5000);
 	display(vec1);

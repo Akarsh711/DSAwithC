@@ -1,13 +1,34 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
 #include <iostream>
+#include <algorithm>
+using namespace std;
 
-void printArray(int A[], int size)
-{
-    for (int i = 0; i < size; i++)
-        std::cout << A[i] << " ";
+
+int main() {
+    int n,k;
+    cout<<"enter size of array";
+    cin>>n;
+    int **arr = new int*[n];
+    int *cols_arr = new int[n];
+    // Let's create a Two Dimensional Array 
+    for(int i=0; i<n; i++){
+        cout <<"Enter Size for Second Array";
+        cin>>cols_arr[i];
+        arr[i] = new int[cols_arr[i]];
+        for(int j=0; j<cols_arr[i]; j++){
+            cin >> arr[i][j];
+        }
+    }
+    for(int i=0; i<n; i++){
+        cout <<endl;
+
+        for(int j=0; j<cols_arr[i];j++){
+            cout << arr[i][j]<< " ";
+        }
+    }
+    // cout << arr[0][1];
+    return 0;
 }
 
-int main(){
-	int A[] = {5,47,3,46,4,67};
-	std::swap(A[0] , A[0]);
-	printArray(A, 6);
-}
