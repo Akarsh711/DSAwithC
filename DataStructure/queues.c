@@ -32,7 +32,7 @@ int isEmpty(struct Queue *queue){
 void enQueue(struct Queue *queue, int item){
     if(isFull(queue))
         return;
-    queue->rear = (queue->rear +1)%queue->capacity; //Ask yourself why we used this 
+    queue->rear = (queue->rear +1)%queue->capacity; //for circulation
     queue->array[queue->rear] = item;
     queue->size = queue->size+1;
     printf("enqued to item %d\n", item);
