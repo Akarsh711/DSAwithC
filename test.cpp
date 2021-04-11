@@ -1,34 +1,85 @@
-#include <cmath>
-#include <cstdio>
-#include <vector>
+// implementing queue in cpp
 #include <iostream>
-#include <algorithm>
+
 using namespace std;
 
+// int isOverflow(int &rear){
+//     if(rear == size)
+//         return 1;
+//     return 0;
+// }
+// void isUnderflow(int arr){}
 
-int main() {
-    int n,k;
-    cout<<"enter size of array";
-    cin>>n;
-    int **arr = new int*[n];
-    int *cols_arr = new int[n];
-    // Let's create a Two Dimensional Array 
-    for(int i=0; i<n; i++){
-        cout <<"Enter Size for Second Array";
-        cin>>cols_arr[i];
-        arr[i] = new int[cols_arr[i]];
-        for(int j=0; j<cols_arr[i]; j++){
-            cin >> arr[i][j];
-        }
-    }
-    for(int i=0; i<n; i++){
-        cout <<endl;
 
-        for(int j=0; j<cols_arr[i];j++){
-            cout << arr[i][j]<< " ";
+void enQueue(int arr[], int val, int &front, int &rear, int size){
+    if(rear == size){
+        cout << "Over Flow" <<endl;
+        return;
         }
-    }
-    // cout << arr[0][1];
-    return 0;
+    arr[rear] = val;
+    rear++;
+}
+
+void deQueue(int arr[], int &front, int &rear, int size){
+    if(front == rear){
+        cout << "Under Flow" <<endl;
+        return;
+        }
+    cout<<arr[front];
+    front = front+1%size;
+}
+
+
+void enQueueD(int arr[], int val, int &front, int &rear, int &size, int capacity){
+    if(size ==capacity){
+        cout << "Over Flow" <<endl;
+        return;
+        }
+    arr[rear] = val;
+    rear = rear+1%capacity;
+    size ++;
+}
+
+void deQueueD(int arr[], int &front, int &rear, int &size, int capacity){
+    if(size == 0){
+        cout << "Under Flow" <<endl;
+        return;
+        } 
+    cout<<arr[front];
+    front = front+1%capacity;
+    size --;
+}
+
+
+
+int main(){
+    int capacity = 3;
+    int size = 0;
+    int front=0;
+    int rear = 0;
+    int arr[capacity]; 
+    // enQueue(arr, 1, front, rear, size);
+    // enQueue(arr, 2, front, rear, size);
+    // enQueue(arr, 3, front, rear, size);
+    // enQueue(arr, 4, front, rear, size);
+    // deQueue(arr, front, rear, size);
+    // deQueue(arr, front, rear, size);
+    // deQueue(arr, front, rear, size);
+    // deQueue(arr, front, rear, size);
+
+
+    enQueueD(arr, 9, front, rear, size, capacity);
+    enQueueD(arr, 8, front, rear, size, capacity);
+    enQueueD(arr, 7, front, rear, size, capacity);
+
+    enQueueD(arr, 99, front, rear, size, capacity);
+    deQueueD(arr, front, rear, size, capacity);
+    enQueueD(arr, 6, front, rear, size, capacity);
+    deQueueD(arr, front, rear, size, capacity);
+    deQueueD(arr, front, rear, size, capacity);
+    deQueueD(arr, front, rear, size, capacity);
+    deQueueD(arr, front, rear, size, capacity);
+    deQueueD(arr, front, rear, size, capacity);
+
 }
 
