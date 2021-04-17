@@ -44,7 +44,6 @@ void deQueue(struct Queue *queue){
     queue->front = (queue->front + 1) % queue->capacity;
     queue->size = queue->size -1;
     printf("denquing  item");
-
 }
 
 int main(){

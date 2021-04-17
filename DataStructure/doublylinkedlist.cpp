@@ -72,7 +72,6 @@ int main(){
 	struct Node *root = createNode(1);
 	struct Node *last = insert(root, createNode(2));
 	insertAtAnyPos(root, 1, createNode(9));
-	
 	printList(root);
 	cout <<endl;
 	reverseTraversal(last);
