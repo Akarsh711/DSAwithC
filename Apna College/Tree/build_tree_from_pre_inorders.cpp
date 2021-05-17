@@ -2,7 +2,7 @@
 
 using namespace std;
 
-// in this we gonna build tree from preorder and inorder
+// In this we gonna build tree from preorder and inorder
 struct Node{
 	int data;
 	struct Node *left;
@@ -45,26 +45,6 @@ Node * buildtreefromPreOrder(int preorder[], int inorder[], int start, int end){
 	return node;
 }
 
-Node * buildtreefromPostOrder(int preorder[], int inorder[], int start, int end){
-	static int idx = 0;
-
-	if(start>end){
-		return NULL;
-	}
-
-	int curr = preorder[idx];
-	idx++;
-	Node * node = new Node(curr);
-	if(start == end){
-		return node;
-	}
-
-	int pos = search(inorder, start, end, curr);
-	node->left = buildtreefromPostOrder(preorder, inorder, start, pos-1);
-	node->right = buildtreefromPostOrder(preorder, inorder, pos+1, end);
-	
-	return node;
-}
 
 
 void inorderPrint(Node *root){

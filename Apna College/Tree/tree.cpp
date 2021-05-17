@@ -1,6 +1,9 @@
 # include <stdio.h>
 # include <conio.h>
-// # include <iostream>
+# include <iostream>
+# include <queue>
+
+using namespace std;
 struct Node{
         struct Node *left;
         struct Node *right;
@@ -31,27 +34,6 @@ void insert(struct Node *root, struct Node *item){
     }
 }
 
-// struct Node* insertAnotherWay(struct Node* root, int key)
-// {
-//     if (root == nullptr) {
-//         return newNode(key);
-//     }
-//     if (key < root->data) {
-//         root->left = insertAnotherWay(root->left, key);
-//     }
-//     else {
-//         root->right = insertAnotherWay(root->right, key);
-//     }
-//     return root;
-// }
-
-void printTreeRecursively(struct Node * root){
-    if(root){
-        printTreeRecursively(root->left); //IN OOPS IT WILL LOOK LIKE THIS :- left.printTreeRecursively
-        printf("%d",root->data);
-        printTreeRecursively(root->right);
-    }
-}
 
 // root->left->right
 void preOrder(struct Node *root){
@@ -92,6 +74,30 @@ void search(struct Node *root, int item){
     }
 }
 
+void levelOrderTraversal(struct Node *root){
+    if(root==NULL){
+        return;
+    }
+
+    queue <Node*> q;
+    q.push(root);
+    q.push(NULL);
+
+    while(!q.empty()){
+        struct Node *node = q.front();
+        q.pop();
+        if(node!=NULL){
+            printf("%d",node->data);
+            if(node->left)
+                q.push(node->left);
+            else
+                q.push(node->right); 
+        }
+        else if(!q.empty())
+            q.push(NULL);
+    }
+}
+
 /* TODO */
 // Traversal, Search, Insert Using Loop 
 
@@ -102,8 +108,9 @@ int main(){
     root->right = createNode(4);
     struct Node *item = createNode(1);
     insert(root, item);
-    printTreeRecursively(root);
     printf("------------------");
     inOrder(root);
     search(root, 2);
+    levelOrderTraversal(root);
 }
+

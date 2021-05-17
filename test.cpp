@@ -1,85 +1,35 @@
-// implementing queue in cpp
+
+// Sample code to perform I/O:
+
 #include <iostream>
+#include<string>
 
 using namespace std;
+int girls(string s){
+    int n = s.length();
+    char arr[n];
+    for(int i=0; i<n; i++){
+        arr[i] =s[i];
+    }
+    
+    int count;
+    for(int i=0; i<n; i++){
+        if(arr[i]!='6')
+            count++;
 
-// int isOverflow(int &rear){
-//     if(rear == size)
-//         return 1;
-//     return 0;
-// }
-// void isUnderflow(int arr){}
-
-
-void enQueue(int arr[], int val, int &front, int &rear, int size){
-    if(rear == size){
-        cout << "Over Flow" <<endl;
-        return;
+        // cout<<arr[i];
+    }
+    if(s[n-1]=='6'){
+        cout<<"in fi";
+        // count = -1;
         }
-    arr[rear] = val;
-    rear++;
+    cout<<"in else";
+    return count;
 }
-
-void deQueue(int arr[], int &front, int &rear, int size){
-    if(front == rear){
-        cout << "Under Flow" <<endl;
-        return;
-        }
-    cout<<arr[front];
-    front = front+1%size;
-}
-
-
-void enQueueD(int arr[], int val, int &front, int &rear, int &size, int capacity){
-    if(size ==capacity){
-        cout << "Over Flow" <<endl;
-        return;
-        }
-    arr[rear] = val;
-    rear = rear+1%capacity;
-    size ++;
-}
-
-void deQueueD(int arr[], int &front, int &rear, int &size, int capacity){
-    if(size == 0){
-        cout << "Under Flow" <<endl;
-        return;
-        } 
-    cout<<arr[front];
-    front = front+1%capacity;
-    size --;
-}
-
-
-
-int main(){
-    int capacity = 3;
-    int size = 0;
-    int front=0;
-    int rear = 0;
-    int arr[capacity]; 
-    // enQueue(arr, 1, front, rear, size);
-    // enQueue(arr, 2, front, rear, size);
-    // enQueue(arr, 3, front, rear, size);
-    // enQueue(arr, 4, front, rear, size);
-    // deQueue(arr, front, rear, size);
-    // deQueue(arr, front, rear, size);
-    // deQueue(arr, front, rear, size);
-    // deQueue(arr, front, rear, size);
-
-
-    enQueueD(arr, 9, front, rear, size, capacity);
-    enQueueD(arr, 8, front, rear, size, capacity);
-    enQueueD(arr, 7, front, rear, size, capacity);
-
-    enQueueD(arr, 99, front, rear, size, capacity);
-    deQueueD(arr, front, rear, size, capacity);
-    enQueueD(arr, 6, front, rear, size, capacity);
-    deQueueD(arr, front, rear, size, capacity);
-    deQueueD(arr, front, rear, size, capacity);
-    deQueueD(arr, front, rear, size, capacity);
-    deQueueD(arr, front, rear, size, capacity);
-    deQueueD(arr, front, rear, size, capacity);
-
+int main() {
+    string num;
+    
+    cin >> num; 
+    cout<<girls(num); 
 }
 
