@@ -106,7 +106,7 @@ int main(){
     struct Node *root = createNode(3);
     root->left = createNode(2);
     root->right = createNode(4);
-    struct Node *item = createNode(1);
+    struct Node *item = createNode(3);
     insert(root, item);
     printf("------------------");
     inOrder(root);

@@ -3,11 +3,11 @@ using namespace std;
 
 
 // Gives how many can give n when add together in arr 
+// It's a bit different then howsum as it have if in loop. 
 int howmanycanSum(int n, int arr[], int size){
 	 if(n==0){
 	 	return 1;
 	 }
-
 	 int is = 0;
 	 for(int i=0; i<size; i++){
 	 	if(n>=arr[i]){
