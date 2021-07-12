@@ -1,11 +1,20 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// inputs 
-// first line contains number of vertex and edges
-// next line will take connection b/w vertex1, vertex2, weight according to number of
-// edges provided in previous line
-// last line contain src where to start
+/*
+inputs 
+first line contains number of vertex and edges
+next line will take connection b/w vertex1, vertex2, weight according to number of
+edges provided in previous line
+last line contain src where to start
+*/
+
+/*
+This is lazy implementation in which it repeats value in heap as search time complexity of heap is more 
+than fetch and retrive and delete that node after visiting lazyly 
+It can be improve using search on indexed prioriy Queue 
+*/
+
 int main(){
 	int src;
 	int V,E; cin>>V>>E;

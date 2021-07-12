@@ -5,6 +5,7 @@ void DFS(vector<vector<int>> &adj, vector<bool> &visited, int vertex){
 	visited[vertex] = true;
 	cout<<vertex;
 	for(auto i: adj[vertex]){
+		cout<<i<<":"<<vertex<<" ";
 		if(!visited[i]){
 			DFS(adj, visited, i);
 		}
@@ -48,5 +49,5 @@ int main(){
 	// 	for(int j=0;j++)
 	// 		cout<<adj[i][j]<<endl;
 	// }
-	iterDFS(adj, visited, 0);
+	DFS(adj, visited, 0);
 }
