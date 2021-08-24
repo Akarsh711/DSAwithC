@@ -40,11 +40,12 @@ void inOrder(struct Node *root){
 }
 
 int main(){
-	int arr[] = {1,2,4,5,6};
+	// int arr[] = {1,2,4,5,6};
+	int arr[] = {4,5,6,7,8,9};
 
 	struct Node *root = new Node(2);
 	// root->left = new Node(1);
 	// root->right = new Node(3);
-	root = buildTree(arr, 0, 4);
+	root = buildTree(arr, 0, (sizeof(arr)/sizeof(int))-1);
 	inOrder(root);
 }

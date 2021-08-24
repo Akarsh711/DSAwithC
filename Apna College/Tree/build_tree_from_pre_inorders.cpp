@@ -34,6 +34,8 @@ Node * buildtreefromPreOrder(int preorder[], int inorder[], int start, int end){
 	int curr = preorder[idx];
 	idx++;
 	Node * node = new Node(curr);
+	// !IMPORTANT!This below if should be after idx++ as when a node is leaf it should return, while
+	// incrementing idx for next recursion!
 	if(start == end){
 		return node;
 	}
@@ -44,7 +46,11 @@ Node * buildtreefromPreOrder(int preorder[], int inorder[], int start, int end){
 	
 	return node;
 }
-
+/*
+ALGO:
+	int arr[] = {4,5,6,7,8,9}; //Sorted/Inorder
+	int prearr[] = {6,4,5,8,7,9}; //Preorder
+*/
 
 
 void inorderPrint(Node *root){

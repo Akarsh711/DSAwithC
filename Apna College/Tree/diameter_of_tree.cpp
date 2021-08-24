@@ -35,6 +35,17 @@ int diameter(Node *root){
 	return ma;
 }
 
+// Also can be done as
+// Declaring dia global and initializing h =-1
+// int treeDiameter(Node *root, int h){
+// 	if(root == NULL) return h;
+// 	h++;
+// 	int lh = treeDiameter(root->left, h);
+// 	int rh = treeDiameter(root->right, h);
+
+// 	dia = max((lh+rh)+1, dia);
+// 	// cout<<dia<<endl;
+// 	return max(lh, rh)
 
 /**
     1
