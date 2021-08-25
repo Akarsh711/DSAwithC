@@ -1,5 +1,5 @@
 // In this we we'll look at rightmost node in each level
-
+// Kindoff same as level order but in this we didn't use null in queue
 #include<iostream>
 #include<queue>
 #include<vector>
@@ -101,7 +101,7 @@ int main(){
     root->right->left = new Node(6);
     root->right->left->left = new Node(9);
     root->right->right = new Node(7);
- 	rightView(root);
+ 	myrightView(root);
  	cout<<"\n";
- 	leftView(root);
+ 	rightView(root);
 }

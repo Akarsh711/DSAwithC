@@ -1,6 +1,8 @@
 // Level Order Traversal using Queue
 // After every node there is NULL
 
+// It will taught you a nice lesson about how recursion can be use as bool don't be fool
+
 #include <iostream>
 #include <queue>
 using namespace std;
@@ -40,7 +42,6 @@ void insert(struct Node *root, struct Node *item){
             insert(root->right, item);
     }
 }
-
 
 
 // left->root->right
@@ -131,6 +132,6 @@ int main(){
     // cout<<root->right->data;
 
     // levelOrderTraversal(root);
-    cout <<sumAtK(root, 1);
+    cout <<sumAtK(root, 2);
 }
 

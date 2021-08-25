@@ -1,9 +1,11 @@
 #include <iostream>
 using namespace std;
+// Take two node and check where they meet(common anncessotro)
+// We gonna take two paths and compare the decendent
+// Means we gonna find the path for two of our nodes and then we compare the path
+// of both and look where the paths gets change
 
-#include<iostream>
-
-using namespace std;
+// It will taught you a nice lesson about how recursion can be use as bool don't be fool
 struct Node{
 	int data;
 	struct Node *left;
@@ -23,12 +25,13 @@ bool getPath(Node *root, int key, vector<int> &path){
 
 	if(root->data == key) return true;
 
-	if(getPath(root->left, key, path)||getPath(root->right, key, path))return true;
+	if(getPath(root->left, key, path) || getPath(root->right, key, path)) return true;
 
 	path.pop_back();
 
 	return false;
 }
+
 
 int lCA(Node *root, int a, int b){
 	vector<int> path1, path2;
@@ -38,7 +41,7 @@ int lCA(Node *root, int a, int b){
 
 	int pc; //path change
 
-	for(pc=0; pc<path1.size() && path2.size(); pc++){
+	for(pc=0; pc<path1.size() && pc<path2.size(); pc++){
 		if(path1[pc]!=path2[pc])
 			break;
 	}

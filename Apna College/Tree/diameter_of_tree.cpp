@@ -35,7 +35,7 @@ int diameter(Node *root){
 	return ma;
 }
 
-// Also can be done as
+// Also can be done as:
 // Declaring dia global and initializing h =-1
 // int treeDiameter(Node *root, int h){
 // 	if(root == NULL) return h;

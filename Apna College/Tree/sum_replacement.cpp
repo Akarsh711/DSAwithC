@@ -14,6 +14,21 @@ struct Node{
 		right = NULL;
 	}
 };
+int sumReplacementProMaxMineVersionLol(Node *root){
+	if(!root) return 0;
+
+	int val1 = sumReplacement(root->left);
+	int val2 = sumReplacement(root->right); 
+	root->data= val1+val2+root->data;
+	return root->data;
+}
+
+int sumReplacementProMax(Node *root){
+	if(!root) return 0;
+
+	root->data= sumReplacement(root->left)+sumReplacement(root->right)+root->data;
+	return root->data;
+}
 
 int sumReplacement(struct Node* root){
 	if(root==NULL) return 0;
