@@ -5,7 +5,6 @@ using namespace std;
 // Means we gonna find the path for two of our nodes and then we compare the path
 // of both and look where the paths gets change
 
-// It will taught you a nice lesson about how recursion can be use as bool don't be fool
 struct Node{
 	int data;
 	struct Node *left;
@@ -21,7 +20,7 @@ bool getPath(Node *root, int key, vector<int> &path){
 	if(root==NULL)
 		return false;
 	
-	path.push_back(root->data);
+	path.push_back(root->data);//It will spit a nice bug if you put this in backtrack
 
 	if(root->data == key) return true;
 

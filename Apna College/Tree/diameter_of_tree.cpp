@@ -1,6 +1,8 @@
 // Height and Diameter of Tree
 // Diameter of Tree: Number of nodes in the longest path b/w any 2 leaves.
 
+// EXTRAS: You will see an cpp concept of using var refrence without providing
+// in params. using calling a function from an another functions
 #include<iostream>
 
 using namespace std;
