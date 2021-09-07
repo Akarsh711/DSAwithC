@@ -32,6 +32,21 @@ Node * flatten(Node *root){
     return root;
 }
 
+void flattenPro(Node * root){
+    if(!root) return;
+    if(root->left){
+        flattenPro(root->left);
+        Node * temp = root->right;
+        root->right = root->left;
+        root->left = NULL;
+        Node *t = root->right;
+        while(t->right!=NULL) t=t->right;
+        t->right = temp;
+    }
+    flattenPro(root->right);
+    
+}
+
 void printList(Node * root){
     if(!root) return;
     cout<<root->data;
@@ -44,8 +59,10 @@ int main(){
     root->left->left = new Node(3);
     root->right = new Node(5);
     root->right->right = new Node(6);
-    Node *newroot = flatten(root);
-    printList(newroot);
+    cout<<"ayaay"<<endl;
+    // Node *newroot = flatten(root);
+    flattenPro(root);
+    printList(root);
     cout<<"endof program";
     return 0;
 }
