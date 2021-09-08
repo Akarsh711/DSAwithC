@@ -9,6 +9,7 @@ struct Node{
     }
 };
 
+//Mine's Solution 
 Node * flatten(Node *root){
     if(!root) return NULL;
     Node * lh = flatten(root->left);
@@ -32,6 +33,7 @@ Node * flatten(Node *root){
     return root;
 }
 
+// Apni Microsoft Wali Didi's Solution
 void flattenPro(Node * root){
     if(!root) return;
     if(root->left){
@@ -45,6 +47,38 @@ void flattenPro(Node * root){
     }
     flattenPro(root->right);
     
+}
+
+// Striver's Flatten Solution 
+void flatten3(Node * root, Node* prev){
+    if(!root) return;
+    flatten3(root->right, prev);
+    flatten3(root->left, prev);
+    root->right = prev;
+    root->left = NULL;
+    prev = root;
+}
+
+// Loopy Solution
+/*
+    It follows top down approach
+    means it put the whole subtree first and then solve further
+
+    Whereas in Recursion we first solve the subtree then we put on to the right 
+*/
+void flatten4(Node * root){
+    Node *curr= root;
+    while(curr){
+        if(curr->left!=NULL){
+            Node *temp = curr->right;
+            curr->right = curr->left;
+            curr->left = NULL;
+            Node * t = curr->right;
+            while(t->right!=NULL) t = t->right;
+            t->right = temp;
+        }
+        curr= curr->right;
+    }
 }
 
 void printList(Node * root){
