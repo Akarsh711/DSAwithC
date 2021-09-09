@@ -34,10 +34,10 @@ Node * flatten(Node *root){
 }
 
 // Apni Microsoft Wali Didi's Solution
-void flattenPro(Node * root){
+void flatten2(Node * root){
     if(!root) return;
     if(root->left){
-        flattenPro(root->left);
+        flatten2(root->left);
         Node * temp = root->right;
         root->right = root->left;
         root->left = NULL;
@@ -45,13 +45,13 @@ void flattenPro(Node * root){
         while(t->right!=NULL) t=t->right;
         t->right = temp;
     }
-    flattenPro(root->right);
+    flatten2(root->right);
     
 }
 
 // Striver's Flatten Solution 
-void flatten3(Node * root, Node* prev){
-    if(!root) return;
+void flatten3(Node * root, Node* &prev){
+    if(root==NULL) return;
     flatten3(root->right, prev);
     flatten3(root->left, prev);
     root->right = prev;
@@ -93,10 +93,8 @@ int main(){
     root->left->left = new Node(3);
     root->right = new Node(5);
     root->right->right = new Node(6);
-    cout<<"ayaay"<<endl;
-    // Node *newroot = flatten(root);
-    flattenPro(root);
+    Node * p = NULL;
+    flatten3(root, p);
     printList(root);
-    cout<<"endof program";
     return 0;
 }
