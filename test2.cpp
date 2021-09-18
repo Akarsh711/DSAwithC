@@ -1,32 +1,23 @@
 // #include <stdio.h>
 #include<iostream>
 using namespace std;
-struct Node{
 
-	int data;
-	struct Node * next;
-	Node(int val){
-		data = val;
-		next =  NULL;
+bool sorted(int arr[], int n){
+	if(n==1) return true;
+	// if(n==1){
+	// 	return true;
+	// }
+	// bool resArray = sorted(arr+1, n-1);
+	// return (arr[0]< arr[1] && restArray);
+	for(int i =0; i<n; i++){
+		cout<<arr[i]<<endl;
 	}
-};
-
-void bot(Node * root){
-	Node * curr = root;
-	curr->next = new Node(45);
-	curr->next->next= new Node(99);
-}
-
-void printList(Node *root){
-	if(!root) return;
-	cout<<root->data<<endl;
-	printList(root->next);
+	sorted(arr+1, n-1);
 }
 
 int main(){
-	Node * root = new Node(1);
-	root->next = new Node(2);
-	root->next->next = new Node(3);
-	bot(root);
-	printList(root);
+	int arr[] = {1,6,7,8, 5};
+	sorted(arr, 5);
+	// cout<<arr+1;
+	return 0;
 }

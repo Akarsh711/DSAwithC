@@ -1,98 +1,36 @@
-/*
-NODES AT DISTANCE K:
-    It takes a node(target) in the tree and finds the nearby nodes according to distance(k) given.
-    It searches subtree as well as supertree.
-
-    Example:
-            1
-           / \
-          2   5
-         / \   \
-        3  4    6
-
-        for 5 with distance 1 we should have output 6, 1
-*/
-
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
+clock_t start = clock();
 
-struct Node{
-    int data;
-    Node * left;
-    Node * right;
-    Node(int val){
-        data = val;
+void solve() {
+  int n, x; cin >> n >> x;
+  map<int, int> cnt, op;
+  for (int i = 0; i < n; i++) {
+    int y; cin >> y;
+    cnt[y]++;
+    if (x != 0) {
+      cnt[y ^ x]++;
+      op[y ^ x]++;
     }
-};
-
-// CASE 1 For the subtree
-void printSubtreeNodes(Node * root, int k){
-    if(root == NULL || k<0){
-        return;
+  }
+  int equal = 0, operation = 0;
+  for (auto u : cnt) {
+    if (u.second > equal) {
+      equal = u.second;
+      operation = op[u.first];
+    } else if (u.second == equal) {
+      operation = min(op[u.first], operation);
     }
-    if(k == 0){
-        cout<<root->data<<" ";
-        return;
-    }
-
-    printSubtreeNodes(root->left , k-1);
-    printSubtreeNodes(root->right , k-1);
+  }
+  cout << equal << ' ' << operation << '\n';
 }
 
-
-// CASE 2 For the supertree
-int printNodeAtK(Node * root, Node * target, int k){
-    if(root==NULL){
-        return -1;
-    }
-
-    // It will solve the first case
-    if(root == target){
-        printSubtreeNodes(root, k);
-        return 1;
-    }
-
-    int dl = printNodeAtK(root->left, target, k);
-    if(dl !=-1){ //It means we found our target in left sub tree
-        if(dl == k){
-            cout<<root->data<<" ";
-        }
-        else{
-            printSubtreeNodes(root->right, k-dl-1);
-        }
-        return 1+dl;
-    }
-     
-    int dr = printNodeAtK(root->right, target, k);
-    if(dr!=-1){
-        if(dr == k){
-            cout<<root->data<<" ";
-        }
-        else{
-            printSubtreeNodes(root->left, k-dr-1);
-        }
-        return 1+dr;
-    }
-    return -1;
-}
-/*
-    Explaning printNodeAtK in simple words:
-    if we found target in left then we'll check distance for subtree and for right tree from anccesstor
-    if we found target in right then we'll check distance for subtree and for left tree from anccesstor
-
-    Why k-d-1?
-    -1 one is there because we are refering root->left or root->right in which we lost a distance by 1.    
-    
-
-*/
-int main(){
-    Node *root = new Node(1);
-    root->left = new Node(2);
-    root->left->right = new Node(4);
-    root->left->left = new Node(3);
-    root->right = new Node(5);
-    root->right->right = new Node(6);
-
-    printNodeAtK(root, root , 1);
-    return 0;
+signed main() {
+  ios_base :: sync_with_stdio(0); cin.tie(0); cout.tie(0);
+  int t = 1;
+  cin >> t;
+  for (int i = 1; i <= t; i++) solve();
+//   cerr << fixed << setprecision(10);
+//   cerr << "Time taken = " << (clock() - start) / ((double)CLOCKS_PER_SEC) << " s\n";
+  return 0;
 }
