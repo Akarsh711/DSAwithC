@@ -1,45 +1,41 @@
-#include <iostream>
-#include<map>
+#include<bits/stdc++.h>
 using namespace std;
 
-int main() {
-    int t;
-    cin>>t;
+int main(){
+ios_base::sync_with_stdio(false);
+cin.tie(NULL);
+	int t;
+	cin>>t;
+	while(t--){
+		int n, x;
+		cin>>n>>x;
+		map<int, int> f;
+		map<int, int> o;
 
-    while(t--){
-        map<int, int> inputarr;
-        map<int, int> res;
-        // map<int, int> oper;
-        int N,X;
-        cin>>N>>X;
+		for(int i=0; i<n; ++i){
+			int temp;
+			cin>>temp;
+			f[temp]++;
 
-        for(int i=0; i<N; i++){
-            int temp;
-            cin>>temp;
-            inputarr[temp]++;
-        }
+			if(x != 0){
+				f[temp^x]++;
+				o[temp^x]++;
+			}
+		}
 
-        // Do the XOR and check the if greatness
-        for(auto i: inputarr){
-            if(X!=0)
-                res[i.first^X] ++; //or you can do shortend res[i.first ^ X];
-                // MM putting here = i.second
-        }
-
-        int greatest=0, low=0; 
-        for(auto i: inputarr){
-            if((i.second+res[i.first])>greatest){
-                
-                greatest = i.second+res[i.first];
-                low = res[i.first];
-            }
-            else if((i.second+res[i.first]) == greatest)
-                if(res[i.first]<low) low = max(res[i.first], low);//MM max
-
-            // OR
-            // greatest = max(res[i.first], greatest);
-            // low = max(res[i.second], low);
-        }
-        cout<<greatest<<" "<<low<<endl;
-    }
+		int max=0, minimum=0;
+		for(auto i: f){
+			if(i.second> max){
+				max = i.second;
+				minimum = o[i.first];
+			}
+			else if(i.second == max){
+				minimum = min(minimum, o[i.first]);
+			}
+		}
+		cout<<max<< ' ' <<minimum<<endl;
+		
+	}
+	
+return 0;
 }

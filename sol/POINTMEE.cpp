@@ -16,6 +16,7 @@ auto moves(tuple<int, int, int> point, int n, vector<pair<int, int>> p)
             cur -= 2;
         else if (ax == x || ay == y || (ax - ay) == (x - y) || (ax + ay) == (x + y))
             cur--;
+            
     }
     return cur;
 }
@@ -30,7 +31,7 @@ auto intersect(auto line1, auto line2){
 
     // auto [a2 ,b2, c2] = line2;
     int den =a1*b2 - a2*b1;
-    int x = 0;
+    int x = INT_MAX;
     int y = 0;
     // cout<<den<<endl;
     if(den!=0){
@@ -47,7 +48,7 @@ auto intersect(auto line1, auto line2){
 
 // // cout<<"working"<<endl;
 return make_tuple(x, y, den);
-// }
+}
 
 int main()
 {
@@ -95,29 +96,29 @@ int main()
         }
 
         // Finding intersection points
-        // auto intersect = [&](auto line1, auto line2)
-        // {
-        //     int a1 = line1[0];
-        //     int b1 = line1[1];
-        //     int c1 = line1[2];
-        //     int a2 = line2[0];
-        //     int b2 = line2[1];
-        //     int c2 = line2[2];
+        /*auto intersect = [&](auto line1, auto line2)
+        {
+            int a1 = line1[0];
+            int b1 = line1[1];
+            int c1 = line1[2];
+            int a2 = line2[0];
+            int b2 = line2[1];
+            int c2 = line2[2];
 
-        //     int den = a1 * b2 - b1 * a2, x = 2e18, y = 0;
-        //     if (den != 0)
-        //     {
-        //         x = b1 * c2 - b2 * c1;
-        //         y = a2 * c1 - a1 * c2;
-        //     }
-        //     if (den < 0)
-        //     {
-        //         den = -den;
-        //         x = -x;
-        //         y = -y;
-        //     }
-        //     return make_tuple(x, y, den);
-        // };
+            int den = a1 * b2 - b1 * a2, x = 2e18, y = 0;
+            if (den != 0)
+            {
+                x = b1 * c2 - b2 * c1;
+                y = a2 * c1 - a1 * c2;
+            }
+            if (den < 0)
+            {
+                den = -den;
+                x = -x;
+                y = -y;
+            }
+            return make_tuple(x, y, den);
+        };*/
 
         int ans = 2 * N;
 

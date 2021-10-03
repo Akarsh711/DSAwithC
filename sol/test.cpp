@@ -33,56 +33,19 @@ int32_t main()
     cin >> TC;
     while (TC--)
     {
-        // ll n; cin >> n;
-        // vector<pair<int, int>> pt(n);
-        // map<tuple<int, int, int>, int> m[4];
-        // for (int i = 0; i < n; i++)cin >> pt[i].first;
-        // for (int i = 0; i < n; i++)cin >> pt[i].second;
-        // for (int i = 0; i < n; i++) {
-        //     auto [xi, yi] = pt[i];
-        //     m[0][ {1, 0, -xi}]++; // stores vertical lines
-        //     m[1][ {0, 1, -yi}]++; // stores horizontal lines
-        //     m[2][ {1, -1, -xi + yi}]++; // stores / lines
-        //     m[3][ {1, 1, -xi - yi}]++; // stores \ lines
-        // }
-
-int N;
-        cin >> N;
-
-        vector<pair<int, int>> p(N); //points
-        map<pair<int, int>, vector<vector<int>>> eqs;
-        vector<pair<int, int>> ip; //intersecting points;
-
-        for (int i = 0; i < N; i++)
-            cin >> p[i].first;
-        for (int i = 0; i < N; i++)
-            cin >> p[i].second;
-
-        // Line Equation
-        for (int i = 0; i < N; i++)
-        {
-            /*
-                1, 0, -xi ++
-                0, 1, -yi ++
-                1, -1, -xi+yi ++
-                1, 1 , -xi-yi ++
-            */
-
-            // [a, b, c]4
-
-            /*
-                Type of lines    x      y
-                -----------------------------
-                90 deg          0         1
-                135 deg         1         1
-                180 deg         1         0
-            */
-
-            eqs[{p[i].first, p[i].second}].push_back({0, 1, -p[i].first});
-            eqs[{p[i].first, p[i].second}].push_back({1, 0, -p[i].second});
-            eqs[{p[i].first, p[i].second}].push_back({1, 1, (p[i].first + p[i].second)});
-            eqs[{p[i].first, p[i].second}].push_back({1, -1, (p[i].first - p[i].second)});
+        ll n; cin >> n;
+        vector<pair<int, int>> pt(n);
+        map<tuple<int, int, int>, int> m[4];
+        for (int i = 0; i < n; i++)cin >> pt[i].first;
+        for (int i = 0; i < n; i++)cin >> pt[i].second;
+        for (int i = 0; i < n; i++) {
+            auto [xi, yi] = pt[i];
+            m[0][ {1, 0, -xi}]++; // stores vertical lines
+            m[1][ {0, 1, -yi}]++; // stores horizontal lines
+            m[2][ {1, -1, -xi + yi}]++; // stores / lines
+            m[3][ {1, 1, -xi - yi}]++; // stores \ lines
         }
+
         auto intersect = [&](auto line1 , auto line2) {
             auto [a1, b1, c1] = line1;
             auto [a2, b2, c2] = line2;
