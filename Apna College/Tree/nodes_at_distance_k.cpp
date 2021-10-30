@@ -75,6 +75,8 @@ int printNodeAtK(Node * root, Node * target, int k){
     }
     return -1;
 }
+
+
 /*
     Explaning printNodeAtK in simple words:
     if we found target in left then we'll check distance for subtree and for right tree from anccesstor
@@ -86,13 +88,15 @@ int printNodeAtK(Node * root, Node * target, int k){
 
 */
 int main(){
-    Node *root = new Node(1);
+    	Node * root = new Node(1);
     root->left = new Node(2);
-    root->left->right = new Node(4);
     root->left->left = new Node(3);
-    root->right = new Node(5);
-    root->right->right = new Node(6);
+    root->left->left->left = new Node(4);
+    root->left->left->left->left = new Node(5);
+    root->left->left->right = new Node(6);
+    root->left->right = new Node(7);
 
-    printNodeAtK(root, root , 1);
+    // Node * target = new Node(4);
+    printNodeAtK(root,  root->left->left->left, 2);
     return 0;
 }
