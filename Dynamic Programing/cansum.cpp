@@ -4,6 +4,7 @@ using namespace std;
 
 // Gives how many can give n when add together in arr 
 // It's a bit different then howsum as it have if in loop. 
+// Also it is unoptimized approach
 int howmanycanSum(int n, int arr[], int size){
 	 if(n==0){
 	 	return 1;
@@ -18,8 +19,9 @@ int howmanycanSum(int n, int arr[], int size){
 }
 
 int main(){
-	int arr[] = {5,3,4,7};
+	// int arr[] = {5,3,4,7};
+	int arr[] = {1,2,3,4};
 	int size = sizeof(arr)/sizeof(int);
-	cout<<howmanycanSum(7, arr, size-1);
+	cout<<howmanycanSum(4, arr, size-1);
 
 }

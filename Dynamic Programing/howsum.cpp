@@ -15,7 +15,6 @@ vector<int> howSum(int targetSum, vector<int> numbers, int size){
 
     vector<int> remainderResult;
     for(int i=0; i<size; i++){	
-
         remainderResult = howSum(targetSum - numbers[i], numbers, size);
         if(remainderResult[0] == NULL){
             remainderResult.push_back(numbers[i]);
@@ -50,8 +49,8 @@ map<int , vector<int>> memo;
 vector<int> num = {2, 3, 5, 8};
 vector <int> result;
 
-result = howSumMemoized(8, num, memo, num.size());
-for(int i=0; i<result.size(); i++)
+result = howSum(8, num, num.size());
+for(int i=1; i<result.size(); i++)
 	cout<< result[i];
 
 }
