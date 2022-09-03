@@ -17,7 +17,7 @@ struct Node{
 struct Node *buildTree(int arr[], int l, int r){
 	if(l == r){
 		return new Node(arr[l]);
-	}
+	} 
 	else if(l>r){
 		return NULL;
 	}

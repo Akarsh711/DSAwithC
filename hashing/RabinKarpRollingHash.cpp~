@@ -1,0 +1,50 @@
+#include<bit/stdc++.h>
+using namespace std;
+
+void solve(){
+	string s1;cin>>s1;
+	string s2; cin>>s2;
+
+	long long int p = 31;
+	long long int pow = p;
+	long long mod = 1e9+7;
+
+	long long dhv = s2[0] - 'a' +1;
+
+	for(int i = 1;i<s2.size(); i++){
+		dhv = (dhv + (s2[i] - 'a' +1)*pow)%mod;
+		pow = (pow*p)%mod;
+	}
+
+	// Rabin karp 
+	vector<long long> dp(s1.size));
+	vector<long long> pa(s1.size());
+	
+	dp[0] = s1[0] - 'a' +1;
+	pa[0] = 1;
+	pow = p;
+	for(int i=1; i<s1.size(); i++){
+		dp[i] = (dp[i-1] + (s1[i] - 'a' +1)*pow)%mod;
+		pa[i] = pow;
+		pow = (pow*p)%mod;
+	}
+
+	int sp=0, ep = s2.size()-1;
+	while(ep<s1.length()){
+		long long window = dp[ep];
+		if(sp>0 ) win = win-dp[sp-1]+mod;
+		if(win == (dhv*pa[sp])%mod) ans.push_back(sp+1);
+	}
+
+	cout<<ans.size();
+	for(auto x: ans)cout<<x<<" ";
+	cout<<endl;
+	cout<<endl;
+
+int main(){
+	int t;cin>>t;
+	while(t--){
+		solve();
+	}
+
+}

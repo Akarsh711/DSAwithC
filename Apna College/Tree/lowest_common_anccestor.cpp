@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-// Take two node and check where they meet(common anncessotro)
+// Take two node and check where they meet(common anncesstor)
 // We gonna take two paths and compare the decendent
 // Means we gonna find the path for two of our nodes and then we compare the path
 // of both and look where the paths gets change
@@ -18,7 +18,7 @@ struct Node{
 
 bool getPath(Node *root, int key, vector<int> &path){
 	if(root==NULL)
-		return false;
+		return false; 
 	
 	path.push_back(root->data);//It will spit a nice bug if you put this in backtrack
 

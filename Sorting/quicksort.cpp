@@ -26,7 +26,9 @@ void printArray(int, int); //Declaration here
 int hoarePartition(int arr[], int l, int r){
 	int i = l;
 	int j = r;
-	int pivot = arr[l];
+	int mid = (l+r)/2;
+	// int pivot = arr[l];
+	int pivot = arr[mid];
 
 	while(true){ // When putting condition in here it's somehow not working gotta find why!
 		while(arr[i] < pivot){
@@ -64,6 +66,7 @@ void printArray(int A[], int size)
 int main(){
 	// int A[] = {5,47,3,46,4,67};
 	int A[] = {7, 6, 5, 4, 3, 2,1};
+	// int A[] = {7,-2, 4, 1, 3};
 	int size = sizeof(A)/sizeof(int);
 	printArray(A, size);
 	// hoarePartition(A, size);

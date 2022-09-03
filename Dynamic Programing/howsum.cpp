@@ -17,7 +17,7 @@ vector<int> howSum(int targetSum, vector<int> numbers, int size){
     for(int i=0; i<size; i++){	
         remainderResult = howSum(targetSum - numbers[i], numbers, size);
         if(remainderResult[0] == NULL){
-            remainderResult.push_back(numbers[i]);
+            remainderResult.push_back(numbers[i] );
             return remainderResult;
         }
     }
