@@ -43,23 +43,31 @@ void Display(Node * root){
     }
 }
 
-void levelOrderLineWise(Node * root){
+void levelOrderLineWiseZigZag(Node * root){
     // Mantra: Remove Print Add
-    queue<Node *> q;
-    queue<Node *> childq;
+    stack<Node *> q;
+    stack<Node *> childq;
     q.push(root);
-    
+    int lvl = 1;
     while(q.size() > 0){
-        root = q.front();
+        root = q.top();
         cout<<root->data<<" ";
         q.pop();
         
-        for(auto child: root->children){
-            childq.push(child);
+        if(lvl%2 == 0){
+            for(int i=root->children.size()-1; i>=0; i--){
+                childq.push(root->children[i]);
+            }
+        }else{
+            for(auto child: root->children){
+                childq.push(child);
+            }  
         }
+            
         
         if(q.size() == 0){
             swap(q, childq);
+            lvl++;
             cout<<"\n";
         }
     }
@@ -72,7 +80,7 @@ int main()
     Node * root = constructor(arr, 21);
     Display(root);
     cout<<"\n";
-    levelOrderLineWise(root);
+    levelOrderLineWiseZigZag(root);
     
     return 0;
 }
