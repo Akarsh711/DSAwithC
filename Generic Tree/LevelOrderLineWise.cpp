@@ -65,6 +65,68 @@ void levelOrderLineWise(Node * root){
     }
 }
 
+
+void levelOrderLineWise2(Node * root){
+    // Mantra: Remove Print Add
+    queue<Node *> q;
+    q.push(root);
+    q.push(NULL);
+    while(q.size() > 0){
+        root = q.front();
+        q.pop();
+        if(root != NULL){
+            cout<<root->data<<" ";
+            for(auto child : root->children){
+                q.push(child);
+            }
+        }
+        else{
+            cout<<"\n";
+            if(q.size()>0)
+                q.push(NULL);
+        }
+        // q.pop();
+        
+    }
+}
+
+void levelOrderLineWise3(Node * root){
+    // Mantra Remains Same: Remove Print Add
+    queue<Node *> q;
+    q.push(root);
+    while(q.size() > 0){
+       int size = q.size();
+       while(size-- > 0){
+           root = q.front(); q.pop();
+           cout<<root->data<<" ";
+           for(auto child:root->children){
+               q.push(child);
+           }
+       }
+       cout<<"\n";
+    }
+}
+
+void levelOrderLineWise4(Node * root){
+    queue<pair<Node *, int>> q;
+    int level = 1;
+    q.push({root,level});
+    while(q.size() > 0){
+        
+        pair<Node *, int> temp = q.front(); q.pop();
+        
+        if(temp.second > level){
+            cout<<"\n";
+            level = temp.second;
+        }
+        cout<<temp.first->data<<" ";
+        for(auto child : temp.first->children){
+            q.push({child, level+1});        
+        }
+    }
+}
+
+
 int main()
 {
     // Generic Tree Constructor
