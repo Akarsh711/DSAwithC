@@ -62,16 +62,17 @@ void levelOrder(Node * root){
     }
 }
 
-void removeLeaves(Node * root){
-    for(int i=root->children.size()-1; i>=0; i--){
-        Node *child = root->children[i];
-        if(child->children.size() == 0){
-            root-> children.erase(root->children.begin()+i);
+Node * linearize(Node * root){
+    Node * temp;
+    for(auto child:root->children){
+        Node * child = Linearize(child);
+        if(temp){
+            temp->next = nchild;
+        } else{
+            temp = nchild;
         }
     }
-    for(auto child: root->children){
-        removeLeaves(child);
-    }
+    return temp;
 }
 
 
@@ -82,8 +83,10 @@ int main()
     Node * root = constructor(arr, 21);
     Display(root);
     cout<<"\n";
-    // cout<<"we";
-    removeLeaves(root);
-    levelOrder(root);
+    Node * nn = linearize(root);
+    while(nn!=NULL){
+        cout<<nn->data<<" ";
+        nn = nn->children;
+    }
     return 0;
 }
