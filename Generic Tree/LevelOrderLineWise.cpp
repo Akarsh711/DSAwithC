@@ -49,6 +49,8 @@ void levelOrderLineWise(Node * root){
     queue<Node *> childq;
     q.push(root);
     
+    O(N) Time 
+    O(2N) Space
     while(q.size() > 0){
         root = q.front();
         cout<<root->data<<" ";
@@ -66,11 +68,17 @@ void levelOrderLineWise(Node * root){
 }
 
 
+/*Other Approaches*/
+
+// Using NULL
 void levelOrderLineWise2(Node * root){
     // Mantra: Remove Print Add
     queue<Node *> q;
     q.push(root);
     q.push(NULL);
+
+    O(N) Time
+    O(N) Space
     while(q.size() > 0){
         root = q.front();
         q.pop();
@@ -90,10 +98,15 @@ void levelOrderLineWise2(Node * root){
     }
 }
 
+// Using Count
 void levelOrderLineWise3(Node * root){
     // Mantra Remains Same: Remove Print Add
+    
     queue<Node *> q;
     q.push(root);
+
+    O(N) Time
+    O(N) space
     while(q.size() > 0){
        int size = q.size();
        while(size-- > 0){
@@ -107,7 +120,9 @@ void levelOrderLineWise3(Node * root){
     }
 }
 
+// Using Pairs
 void levelOrderLineWise4(Node * root){
+
     queue<pair<Node *, int>> q;
     int level = 1;
     q.push({root,level});

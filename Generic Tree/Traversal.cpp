@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+ #include <bits/stdc++.h>
 
 using namespace std;
 
@@ -45,8 +45,9 @@ void Display(Node * root){
 
 void preOrder(Node * root){
     if(root == NULL) return;
+    cout<<root->data<<" ";
     for(auto i:root->children){
-        cout<<root->data<<" ";
+        
         preOrder(i);
         
     }
@@ -56,8 +57,9 @@ void postOrder(Node * root){
     if(root == NULL) return;
     for(auto i:root->children){
         postOrder(i);
-        cout<<root->data<<" ";
+        
     }
+    cout<<root->data<<" ";
 }
 
 int main()
@@ -68,6 +70,7 @@ int main()
     Display(root);
     cout<<"\n";
     preOrder(root);
+    cout<<"\n";
     postOrder(root);
     
     return 0;
