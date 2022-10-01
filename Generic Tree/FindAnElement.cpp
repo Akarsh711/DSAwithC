@@ -43,23 +43,6 @@ void Display(Node * root){
     }
 }
 
-void display(Node *node)
-{
-  string s = "";
-  s += to_string(node->data) + " -> ";
-  for (Node *child : node->children)
-  {
-    s += to_string(child->data) + ", ";
-  }
-
-  cout << s << "." << endl;
-
-  for (Node *child : node->children)
-  {
-    display(child);
-  }
-}
-
 void levelOrder(Node * root){
     // if(root == NULL) return;
     
@@ -105,62 +88,25 @@ void linearize(Node * root){
 
 }
 
-Node * linearizeOptimized(Node * root){
-    vector<Node *> curr;
+bool findElement(Node * root, int val){
+    if(root->data == val) return true;
+
     for(auto child:root->children){
-        curr.push_back(linearizeOptimized(child));
+        if(findElement(child, val)){
+            return true;
+        }
     }
-    // curr.pop_back();
-    while(curr.size()> 1){
-        Node *last = root->children.back();
-        root->children.pop_back();
-        curr.pop_back();
-        Node * secondlast =  curr.back();
-        secondlast->children.push_back(last);
-    }
-    return root;
+    return false;
 }
 
-Node * linearizeOptimized2(Node * root){
-    if(root->children.size()==0)return root;
-    
-    Node * prev = root->children.back();
-    Node * tail = linearizeOptimized2(prev);
-
-    // Node * lkt = linearizeOptimized2(root->children[root->children.size()-1]);
-    while(root->children.size()>1){
-        root->children.pop_back();
-        Node * secondtail = linearizeOptimized2(root->children.back()); 
-        secondtail->children.push_back(prev);
-        prev = root->children.back();
-        
-        //// root->children.pop_back();
-        
-        // Node * last = root->children.back();
-        // root->children.pop_back();
-        // Node * sl = root->children[root->children.size()-1];
-        // Node *slt = linearizeOptimized2(sl);
-        // slt->children.push_back(last);
-    }
-    return tail;
-    // return lkt;
-}
 
 int main()
 {
     // Generic Tree Constructor
     vector<int> arr = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100};
     Node * root = constructor(arr, 21);
-    cout<<"\n";
-    Node * nn = linearizeOptimized2(root);
 
-
-    // taking while(root != NULL) will give you error of index out of bound because in case of last child root->children[0] is not defined
-    Display(root);
-    // while(root->children.size()>0){
-    //     cout<<root->data<<" ";
-    //     root = root->children[0];
-    // }
-    // cout<<root->data;
+    if(findElement(root, -1)) cout<<"True";
+    else cout<<"False";
     return 0;
 }
