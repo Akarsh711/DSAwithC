@@ -49,8 +49,8 @@ void levelOrderLineWise(Node * root){
     queue<Node *> childq;
     q.push(root);
     
-    O(N) Time 
-    O(2N) Space
+    // O(N) Time 
+    // O(2N) Space
     while(q.size() > 0){
         root = q.front();
         cout<<root->data<<" ";
@@ -77,8 +77,8 @@ void levelOrderLineWise2(Node * root){
     q.push(root);
     q.push(NULL);
 
-    O(N) Time
-    O(N) Space
+    // O(N) Time
+    // O(N) Space
     while(q.size() > 0){
         root = q.front();
         q.pop();
@@ -105,8 +105,8 @@ void levelOrderLineWise3(Node * root){
     queue<Node *> q;
     q.push(root);
 
-    O(N) Time
-    O(N) space
+    // O(N) Time
+    // O(N) space
     while(q.size() > 0){
        int size = q.size();
        while(size-- > 0){
