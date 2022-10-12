@@ -1,1 +1,3 @@
 *.exe
+sshkey
+sshkey.pub
