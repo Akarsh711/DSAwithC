@@ -14,7 +14,7 @@ vector<int> spiralOrder(vector<vector<int>>& matrix) {
     vector<int> ans;
     while(cnt<totalelement){
         // upperwall
-        for(int i=minr; i<=maxc && cnt<totalelement; i++){
+        for(int i=minc; i<=maxc && cnt<totalelement; i++){
             ans.push_back(matrix[minr][i]);
             cnt++;
         }
