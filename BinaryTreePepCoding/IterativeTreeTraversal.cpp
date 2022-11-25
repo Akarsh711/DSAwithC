@@ -52,24 +52,25 @@ void iteratvieSol(Node * root){
     stack<pair<Node *, int>>st;
     st.push({root, 1});
     
-    string pre;
-    string in;
-    string post;
-    while(!st.size() > 0){
+    string pre ="";
+    string in="";
+    string post="";
+    
+    while(st.size() > 0){
         pair<Node *,int> top = st.top();
         st.pop();
         
         if(top.second == 1){
-            cout<<top.first->data;
-            pre+=top.first->data+" ";
+            // cout<<top.first->data<<" ";
+            pre+=to_string(top.first->data)+" ";
             top.second++;
             st.push(top);
             if(top.first->left!=NULL)
                 st.push({top.first->left, 1});
         }
         else if(top.second == 2){
-            cout<<top.first->data<<" ";
-            in+=top.first->data+" ";
+            // cout<<top.first->data<<" ";
+            in+=to_string(top.first->data)+" ";
             top.second++;
             st.push(top);
             
@@ -77,7 +78,8 @@ void iteratvieSol(Node * root){
                 st.push({top.first->right, 1});
         }
         else if(top.second == 3){
-            post+=top.first->data+" ";
+            post+=to_string(top.first->data)+" ";
+            // cout<<top.first->data<<" ";
         }
     }
     cout<<pre<<"\n";
@@ -85,10 +87,19 @@ void iteratvieSol(Node * root){
     cout<<post<<"\n";
 }
 
+void display(Node *root){
+    if(!root)return;
+    display(root->left);
+    display(root->right);
+    cout<<root->data<<" ";
+}
 int main(){
     int arr[] = {50, 25, 12, -1, -1, 37, 30, -1, -1, -1, 75, 62, -1, 70, -1, -1, 87, -1, -1};
     int size = sizeof(arr)/sizeof(int);
 
     Node * root = constructFromPepCoding(arr);
+    
+    // display(root);
+    cout<<"\n";
     iteratvieSol(root);
 }
