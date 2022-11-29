@@ -22,6 +22,21 @@ void printArray(int, int); //Declaration here
 // 	}
 // }
 
+int lumutopartition(int arr[], int l, int r){
+	int i = l, j = l;
+	int pivot = arr[r];
+	while(i<=r){
+		if(arr[i]<=pivot){
+			swap(arr[i], arr[j]);
+			i++;
+			j++;
+		}
+		else{
+			i++;
+		}
+	}
+	return (j-1);
+}
 
 int hoarePartition(int arr[], int l, int r){
 	int i = l;
@@ -49,7 +64,7 @@ int hoarePartition(int arr[], int l, int r){
 
 void quickSort(int arr[], int l, int r){
 	if(l<r){
-		int pivot = hoarePartition(arr, l, r);
+		int pivot = lumutopartition(arr, l, r);
 		quickSort(arr, l, pivot-1);
 		quickSort(arr, pivot+1, r);
 	}
