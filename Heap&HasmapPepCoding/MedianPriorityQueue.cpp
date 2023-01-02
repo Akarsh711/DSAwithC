@@ -10,13 +10,7 @@ class MedianPriortiyQueue{
             return left.size() + right.size();
         }
 
-        void add(int val){
-            if(right.size() > 0 && val> right.top()){
-                right.push(val);
-            } else{
-                left.push(val);
-            }
-
+        void balance(){
             if(left.size() - right.size() == 2){
                 right.push(left.top());
                 left.pop();
@@ -24,6 +18,15 @@ class MedianPriortiyQueue{
                 left.push(right.top());
                 right.pop();
             }
+        }
+
+        void add(int val){
+            if(right.size() > 0 && val> right.top()){
+                right.push(val);
+            } else{
+                left.push(val);
+            }       
+            balance();     
         }
     
         int peek(){
